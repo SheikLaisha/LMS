@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} View Book Details {% endblock %}
+
+{% block header %} View Book Details {% endblock %}
+
+{% block body %}
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Back Home</a>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <p>{{ data.name }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <p>{{ data.author }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Genre:</label>
+            <p>{{ data.genre }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <p>{{ data.year }}</p>
+        </div>
+    </div>
+{% endblock %}
