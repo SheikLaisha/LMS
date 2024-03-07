@@ -31,8 +31,8 @@ class Books(db.Model):
 
 @app.route('/')
 def index():
-    data_book = db.session.query(Books)
-    return render_template('index.html', data=data_book)
+    data_books = db.session.query(Books)
+    return render_template('index.html', data=data_books)
 
 @app.route('/input', methods=['GET' , 'POST'])
 def input_data():
@@ -84,7 +84,30 @@ def delete(id):
 
     return redirect(url_for('index'))
 
-@app.route('/view_employee/<int:id>', methods=['GET'])
-def view_employee(id):
-    books = Books.query.get(id)
-    return render_template('view.html', books=books)
+# @app.route('/view/<int:id>',methods=['GET'])
+# def view_data(id):
+#     books = Books.query.get(id)
+#     return render_template('view.html', books=books)
+
+@app.route('/view/<int:id>')
+def view_data(id):
+    data_books = Books.query.get(id)
+    return render_template('view.html', data=data_books)
+
+
+# @app.route('/view/<int:id>', methods=['GET'])
+# def view_book(id):
+#     books = Books.query.get(id)
+#     return render_template('view.html', books=books)
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        search_query = request.form.get('search_query')
+        # Perform search query based on the search_query string
+        # Assuming you have a function to perform search and return results
+        search_results = perform_search(search_query)
+        return render_template('search_res.html', search_results=search_results)
+    else:
+        return render_template('search.html')
+

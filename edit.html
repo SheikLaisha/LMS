@@ -8,6 +8,7 @@
     <a href="{{ url_for('index') }}" class="btn btn-primary">Back Home</a>
     <div class="card-body">
         <form action="{{ url_for('proses_edit') }}" method="POST">
+        
             <div class="form-group">
                 <label for="name">Name:</label>
                 <div class="input-group">
@@ -23,7 +24,7 @@
                 <label for="author">Author:</label>
                 <d class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">@</div>
+                        <div class="input-group-text">#</div>
                     </div>
                     <input type="text" id="author" class="form-control" placeholder="Input Author" name="author" value="{{ data.author }}">
                 </d
